@@ -4,6 +4,20 @@ import "chartjs-plugin-streaming";
 
 const createReactClass = require("create-react-class");
 
+const jsonData = require("./data.json");
+let dataCounter = 0;
+
+function getNextDataPoint() {
+const length = jsonData.length;
+if(dataCounter > length - 1){
+    dataCounter = -1;
+}
+dataCounter++;
+const dataPoint = jsonData[dataCounter].value;
+    console.log(dataPoint);
+return dataPoint;
+}
+
 const data = {
     datasets: [
         {
@@ -30,11 +44,11 @@ const options = {
                     onRefresh: function () {
                         data.datasets[0].data.push({
                             x: Date.now(),
-                            y: Math.random() * 100
+                            y: getNextDataPoint()
                         });
                     },
-                    delay: 300,
-                    refresh: 300
+                    delay: 150,
+                    refresh: 150
                 }
             }
         ],
@@ -48,13 +62,15 @@ const options = {
                     fontColor: "#6c757d"
                 },
                 ticks: {
-                    max: 100,
-                    min: 0
+                    max: 830,
+                    min: 790
                 }
             }
         ]
     }
 };
+
+
 
 export default createReactClass({
     displayName: "LineExample",
