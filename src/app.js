@@ -25,8 +25,8 @@ const data = {
 
             fill: false,
             lineTension: 0.4,
-            backgroundColor: "#f44336",
-            borderColor: "#f44336",
+            backgroundColor: "#3682f4",
+            borderColor: "#EA269C",
             borderJoinStyle: "miter",
             pointRadius: 0,
             showLine: true,
@@ -39,6 +39,9 @@ const options = {
     scales: {
         xAxes: [
             {
+                gridLines: {
+                    color: "rgba(0, 0, 0, 0)",
+                },
                 type: "realtime",
                 realtime: {
                     onRefresh: function () {
@@ -54,6 +57,9 @@ const options = {
         ],
         yAxes: [
             {
+                gridLines: {
+                    color: "#9EAEE140",
+                },
                 scaleLabel: {
                     display: true,
                     fontFamily: "Arial",
